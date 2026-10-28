@@ -930,13 +930,59 @@
         }
 
         @media (max-width: 980px) {
+            body {
+                height: auto;
+                min-height: 100vh;
+                overflow: auto;
+            }
+
             .dashboard {
-                grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+                display: flex;
+                flex-direction: column;
                 gap: 8px;
             }
 
             .card {
-                overflow: hidden;
+                overflow: visible;
+            }
+
+            .main-card {
+                order: 1;
+            }
+
+            #schedule {
+                order: 2;
+            }
+
+            .process-group {
+                order: 3;
+            }
+
+            .schedule-list {
+                height: auto;
+                grid-template-rows: none;
+            }
+
+            .mosaic-frame {
+                min-height: 160px;
+            }
+
+            .status-table thead tr,
+            .status-table tbody tr {
+                grid-template-columns: 90px 88px minmax(0, 1fr);
+            }
+
+            .status-table tbody {
+                grid-template-rows: none;
+            }
+
+            .status-table tbody tr {
+                min-height: 44px;
+            }
+
+            .status-table td:last-child {
+                white-space: normal;
+                overflow-wrap: anywhere;
             }
 
         }
