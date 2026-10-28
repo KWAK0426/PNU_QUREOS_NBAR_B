@@ -1,9 +1,9 @@
-# PNU QUREOS · NBAR 연구 현황 (공유·배포용)
+# PNU QUREOS · NBAR 연구 현황 — B (배포용 샘플)
 
-공동 연구기관에 공유할 NBAR 1차년도 연구 현황 사이트의 배포 준비본입니다.
+B는 공동 연구기관에 공유할 NBAR 1차년도 연구 현황 사이트의 배포 준비본입니다.
 첫 화면은 연구 현황 허브(`index.html`)이며, 개인 업무·메일·내부 도구는 포함하지 않습니다.
 
-- 미리보기: https://kwak0426.github.io/PNU_QUREOS_NBAR/
+- 미리보기: https://kwak0426.github.io/PNU_QUREOS_NBAR_B/
 - 최종 배포: 지도교수 GitHub 저장소로 옮겨 게시 예정
 
 | 경로 | 내용 |
@@ -15,3 +15,5 @@
 | `satellite_anisotropy_dataset.html` 외 2개 | 과업 2~4 준비 페이지 |
 
 검색엔진 노출을 막기 위해 `robots.txt`와 각 페이지의 `noindex` 태그를 두었습니다.
+
+개인 작업용 A(`PNU_QUREOS_NBAR_A`, 비공개)와 짝을 이룹니다. 관측 자료(`data/nbar-data.js`)와 공통 페이지는 A와 같은 내용을 유지합니다.
