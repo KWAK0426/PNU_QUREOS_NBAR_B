@@ -16,4 +16,4 @@ B는 공동 연구기관에 공유할 NBAR 1차년도 연구 현황 사이트의
 
 검색엔진 노출을 막기 위해 `robots.txt`와 각 페이지의 `noindex` 태그를 두었습니다.
 
-개인 작업용 A(`PNU_QUREOS_NBAR_A`, 비공개)와 짝을 이룹니다. 관측 자료(`data/nbar-data.js`)와 공통 페이지는 A와 같은 내용을 유지합니다.
+작업용 A(`KWAK0426/NBAR`, https://kwak0426.github.io/NBAR/)와 짝을 이룹니다. 외부에는 B 주소만 전달합니다. 관측 자료(`data/nbar-data.js`)와 공통 페이지는 A와 같은 내용을 유지합니다.
