@@ -232,16 +232,16 @@ function imageColorbar(src){const name=String(src||'').split('/').pop();return (
 const nbarWavelengths=[444,475,531,560,650,668,705,717,740,842];
 function nbarComparisonCard(){
  const figure=(key,title,src)=>`<figure class="gallery nbar-compare-figure" data-nbar-kind="${key}"><figcaption>${title}</figcaption><button type="button" class="image-btn" data-src="${src}" data-caption="${title} · 668 nm" aria-label="${title} 확대"><img src="${src}" alt="${title} · 668 nm" loading="lazy"></button><div class="analysis-placeholder" hidden>해당 밴드 결과 미생성</div></figure>`;
- return `<div class="analysis-card nbar-comparison"><h4>관측 반사도 모자이크와 NBAR 비교</h4><div class="analysis-control"><label>밴드 <select class="nbar-band">${nbarWavelengths.map(w=>`<option value="${w}" ${w===668?'selected':''}>${w===668?'Red · ':''}${w} nm</option>`).join('')}</select></label></div><div class="nbar-compare-pair">${figure('observed','관측 반사도 모자이크','images/nbar_compare/observed_668.png')}${figure('nbar','NBAR 모자이크 (SZA 29.3° · VZA 0° · VAA — · RAA —)','images/nbar_compare/nbar_668_v2.png')}</div><div class="nbar-compare-difference">${figure('difference','차이 히트맵 · NBAR − 관측 반사도','images/nbar_compare/difference_668.png')}</div><p class="analysis-note nbar-compare-note">668 nm · HT-C 시험 결과 · 글린트 후보 제외 · 같은 유효 화소 비교<br>두 반사도 영상은 동일한 2–98% 색상 범위, 차이는 0을 중심으로 표시<br>수직 관측에서는 VAA·RAA가 정의되지 않으며, 계산에는 RAA 0°를 사용</p></div>`;
+ return `<div class="analysis-card nbar-comparison"><h4>관측 반사도 모자이크와 NBAR 비교</h4><div class="analysis-control"><label>밴드 <select class="nbar-band">${nbarWavelengths.map(w=>`<option value="${w}" ${w===668?'selected':''}>${w===668?'Red · ':''}${w} nm</option>`).join('')}</select></label></div><div class="nbar-compare-pair">${figure('observed','관측 반사도 모자이크','images/nbar_compare/observed_668.png')}${figure('nbar','NBAR 모자이크 (SZA 29.3° · VZA 0° · RAA 0°)','images/nbar_compare/nbar_668_v2.png')}</div><div class="nbar-compare-difference">${figure('difference','차이 히트맵 · NBAR − 관측 반사도','images/nbar_compare/difference_668.png')}</div><p class="analysis-note nbar-compare-note">668 nm · HT-C 시험 결과 · 글린트 후보 제외 · 같은 유효 화소 비교<br>두 반사도 영상은 동일한 2–98% 색상 범위, 차이는 0을 중심으로 표시<br>수직 관측 모델 계산 시 RAA 0° 적용</p></div>`;
 }
 function updateNbarComparison(card){
  const wave=Number(card.querySelector('.nbar-band').value),ready=wave===668;
- for(const [kind,stem,title] of [['observed','observed','관측 반사도 모자이크'],['nbar','nbar','NBAR 모자이크 (SZA 29.3° · VZA 0° · VAA — · RAA —)'],['difference','difference','차이 히트맵 · NBAR − 관측 반사도']]){
+ for(const [kind,stem,title] of [['observed','observed','관측 반사도 모자이크'],['nbar','nbar','NBAR 모자이크 (SZA 29.3° · VZA 0° · RAA 0°)'],['difference','difference','차이 히트맵 · NBAR − 관측 반사도']]){
   const figure=card.querySelector('[data-nbar-kind="'+kind+'"]'),button=figure.querySelector('.image-btn'),img=button.querySelector('img'),placeholder=figure.querySelector('.analysis-placeholder');
   const available=kind==='observed'||ready;button.hidden=!available;placeholder.hidden=available;
   if(available){const src='images/nbar_compare/'+stem+'_'+wave+(kind==='nbar'?'_v2':'')+'.png',caption=title+' · '+wave+' nm';button.dataset.src=src;button.dataset.caption=caption;button.setAttribute('aria-label',caption+' 확대');img.src=src;img.alt=caption;}
  }
- card.querySelector('.nbar-compare-note').innerHTML=ready?'668 nm · HT-C 시험 결과 · 글린트 후보 제외 · 같은 유효 화소 비교<br>두 반사도 영상은 동일한 2–98% 색상 범위, 차이는 0을 중심으로 표시<br>수직 관측에서는 VAA·RAA가 정의되지 않으며, 계산에는 RAA 0°를 사용':wave+' nm 관측 모자이크 표시 · NBAR와 차이 영상은 미생성';
+ card.querySelector('.nbar-compare-note').innerHTML=ready?'668 nm · HT-C 시험 결과 · 글린트 후보 제외 · 같은 유효 화소 비교<br>두 반사도 영상은 동일한 2–98% 색상 범위, 차이는 0을 중심으로 표시<br>수직 관측 모델 계산 시 RAA 0° 적용':wave+' nm 관측 모자이크 표시 · NBAR와 차이 영상은 미생성';
 }
 const rendered=specs.map((s,i)=>({s,i,r:viewResult(report.results.find(r=>r.id===s[0]))}));
 const ap=report.analysisPanels||{};
